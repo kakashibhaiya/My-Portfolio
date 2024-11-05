@@ -45,9 +45,7 @@ const About = () => {
       variants={fadeIn("", "", 0.1, 1)}
       className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
     >
-      I'm a skilled software developer with experience in TypeScript and
-      JavaScript, and expertise in frameworks like React, Node.js, and
-      Three.js. I'm a quick learner and collaborate closely with clients to
+    I'm a passionate React.js Developer with over a year of experience at HCLTech, bringing strong expertise in C++, JavaScript, and the MERN stack. My focus is on building efficient, user-centric web applications with clean, maintainable code. Skilled in data structures and algorithms, I strive to create optimized solutions for complex challenges, staying updated with the latest trends to deliver modern, impactful projects. I'm a quick learner and collaborate closely with clients to
       create efficient, scalable, and user-friendly solutions that solve
       real-world problems. Let's work together to bring your ideas to life!
     </motion.p>

@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+import logoC from "./logoC.svg";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
@@ -20,15 +21,23 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import expressjs from "./tech/expressjs.png";
+import AWS from "./tech/AWS.png";
+import sql from "./tech/sql.png";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
+import hcl from "./company/hcl.png";
+import Edgenre from "./company/Edgenre.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import passwordmanager from "./password-manager.png";
+import flipkart from "./flipkart.png";
+import portfolio from "./portfolio.png";
 
 export {
   logo,
@@ -58,5 +67,14 @@ export {
   tesla,
   carrent,
   jobit,
+  passwordmanager,
+  flipkart,
+  portfolio,
   tripguide,
+  logoC,
+  hcl,
+  Edgenre,
+  expressjs,
+  AWS,
+  sql
 };

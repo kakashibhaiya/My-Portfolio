@@ -16,7 +16,7 @@ const Hero = () => {
             Hi, I'am <span className="text-[#915eff]">Chetan</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Hello my name lauda lesson, I build lauda <br className="sm:block hidden" /> and lesson with some lauda lesson
+            Hello my name is Chetan Singh, I'm a passionate Full-Stack Developer with over a year of experience at HCLTech. <br className="sm:block hidden" />
           </p>
         </div>
       </div>

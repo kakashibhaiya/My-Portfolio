@@ -7,6 +7,11 @@ import { styles } from '../styles';
 import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
+import { form } from 'framer-motion/client';
+
+//  service_fax38x7
+//  template_u8btnt6
+//  lLKpTsQ1451CNLdBe
 
 const Contact = () => {
   const formRef = useRef();
@@ -15,11 +20,49 @@ const Contact = () => {
     email: '',
     message: '',
   });
-  const [loading, setloading] = useState(false);
+  const [loading, setLoading] = useState(false);
  
-  const handleChange = (e) => {}
+  const handleChange = (e) => {
+     const { name, value } = e.target;
+     setFrom({ ...form, [name]: value})
+  }
 
-  const handleSubmit = (e) => {}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs.send(
+      'service_fax38x7',
+      'template_avfuik6',
+      {
+        from_name: form.name,
+        to_name: 'Chetan',
+        from_email: form.email,
+        to_email: 'chetanflash15@gmail.com',
+        message: form.message,
+      },
+      'lLKpTsQ1451CNLdBe'
+    )
+    .then(
+      () => {
+        setLoading(false);
+        alert("Thank you. I will get back to you as soon as possible.");
+
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+      },
+      (error) => {
+        setLoading(false);
+        console.error(error);
+
+        alert("Ahh, something went wrong. Please try again.");
+      }
+    );
+    
+  }
 
   return (
     <div

@@ -17,13 +17,24 @@ import {
     docker,
     meta,
     starbucks,
-    tesla,
     shopify,
     carrent,
     jobit,
+    passwordmanager,
     tripguide,
     threejs,
+    tesla,
+    hcl,
+    Edgenre,
+    expressjs,
+    AWS,
+    sql,
+    flipkart,
+    portfolio,
+
   } from "../assets";
+
+  
   
   export const navLinks = [
     {
@@ -46,12 +57,12 @@ import {
       icon: web,
     },
     {
-      title: "React Native Developer",
-      icon: mobile,
-    },
-    {
       title: "Backend Developer",
       icon: backend,
+    },
+    {
+      title: "GenAI Developer",
+      icon: mobile,
     },
     {
       title: "Content Creator",
@@ -73,8 +84,8 @@ import {
       icon: javascript,
     },
     {
-      name: "TypeScript",
-      icon: typescript,
+      name: "Express JS",
+      icon: expressjs,
     },
     {
       name: "React JS",
@@ -105,22 +116,22 @@ import {
       icon: git,
     },
     {
-      name: "figma",
-      icon: figma,
+      name: "AWS",
+      icon: AWS,
     },
     {
-      name: "docker",
-      icon: docker,
+      name: "sql",
+      icon: sql,
     },
   ];
   
   const experiences = [
     {
       title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
+      company_name: "HCLTech",
+      icon: hcl,
       iconBg: "#383E56",
-      date: "March 2020 - April 2021",
+      date: "Dec 2023 - Present",
       points: [
         "Developing and maintaining web applications using React.js and other related technologies.",
         "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -129,44 +140,19 @@ import {
       ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
+      title: "Front-End Developer Intern ",
+      company_name: "Edgenre Infotech",
+      icon: Edgenre,
       iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
+      date: "Jan 2023 - June 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Designed and implemented responsive user interfaces utilizing modern JavaScript frameworks/libraries, HTML5, and W3CSS, ReactJs.",
+        "Collaborated on APIs to efficiently retrieve and process data from databases, aligned with business logic.",
+        "Diagnosed and resolved complex technical issues, optimizing system performance and user satisfaction.",
       ],
     },
-    {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
-      iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
+   
+    
   ];
   
   const testimonials = [
@@ -198,9 +184,9 @@ import {
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "Password-Manager",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "A password manager web application using React, Express, and MongoDB, enabling users to securely add, edit, and delete passwords for various websites. This project combines a user-friendly interface with secure data handling for managing sensitive information.",
       tags: [
         {
           name: "react",
@@ -214,17 +200,22 @@ import {
           name: "tailwind",
           color: "pink-text-gradient",
         },
+        {
+          name: "express",
+          color: "orange-text-gradient",
+        },
       ],
-      image: carrent,
-      source_code_link: "https://github.com/",
+      image: passwordmanager,
+      source_code_link: "https://github.com/kakashibhaiya/Password-Manager",
+      visit: "https://password-manager-007.netlify.app/",
     },
     {
-      name: "Job IT",
+      name: "flipkartClone",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "A basic Flipkart clone using the MERN stack, which replicates key e-commerce functionalities such as product listing, user authentication, and CRUD operations for product management. This project simulates an online shopping experience and showcases full-stack development, from frontend UI to backend database handling.",
       tags: [
         {
-          name: "react",
+          name: "MERN",
           color: "blue-text-gradient",
         },
         {
@@ -232,33 +223,33 @@ import {
           color: "green-text-gradient",
         },
         {
-          name: "scss",
+          name: "Redux",
           color: "pink-text-gradient",
         },
       ],
-      image: jobit,
-      source_code_link: "https://github.com/",
+      image: flipkart,
+      source_code_link: "https://github.com/kakashibhaiya/flipkartClone",
     },
     {
-      name: "Trip Guide",
+      name: "Portfolio",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "This is an interactive portfolio that I've build using React and Three.js, showcasing my background, experience, and achievements in a visually engaging way. This project highlights my skills and professional journey with 3D effects for an enhanced user experience.",
       tags: [
         {
-          name: "nextjs",
+          name: "threejs",
           color: "blue-text-gradient",
         },
         {
-          name: "supabase",
+          name: "react",
           color: "green-text-gradient",
         },
         {
-          name: "css",
+          name: "tailwind css",
           color: "pink-text-gradient",
         },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: portfolio,
+      source_code_link: "https://github.com/kakashibhaiya/My-Portfolio",
     },
   ];
   
