@@ -10,30 +10,8 @@ const Computers = ({isMobile}) => {
   const computer = useGLTF('./desktop_pc/scene.gltf')
   return (
     <mesh>
-    {/* Hemisphere Light */}
-    <hemisphereLight intensity={1.5}
-     groundColor="black"
-     skyColor="white"
-     position={[0, 50, 0]} />
-    
-     <directionalLight
-  intensity={1}
-  position={[10, 10, 5]} // Adjust position as needed
-  castShadow
-/>
-    {/* Ambient Light */}
-    <ambientLight intensity={0.6} />
-
-    <pointLight intensity={25} />
-
-  
-    {/* Model */}
-    <primitive 
-       object={computer.scene}
-       scale={isMobile?0.4 : 0.65}
-       position={isMobile?[0,-3,-0.7]:[0, -3.25, -1.5]}
-       rotation = {[-0.01, -0.2, -0.1]}
-    />
+    <boxGeometry args={[1, 1, 1]} />
+    <meshStandardMaterial color="blue" />
   </mesh>
   )
 }
