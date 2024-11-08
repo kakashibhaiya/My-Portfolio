@@ -1,87 +1,61 @@
-import React from 'react'
-import { Suspense, useEffect, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
+// Computers.jsx
+import React, { Suspense, useEffect, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
-import CanvasLoader from '../Loader'
+import CanvasLoader from "../Loader";
 
-const Computers = ({isMobile}) => {
+const Computers = ({ isMobile }) => {
+  const computer = useGLTF("./desktop_pc/scene.gltf");
 
-  const computer = useGLTF('./desktop_pc/scene.gltf')
   return (
     <mesh>
-    {/* Hemisphere Light */}
-    <hemisphereLight intensity={1.5}
-     groundColor="black"
-     skyColor="white"
-     position={[0, 50, 0]} />
-    
-     <directionalLight
-  intensity={1}
-  position={[10, 10, 5]} // Adjust position as needed
-  castShadow
-/>
-    {/* Ambient Light */}
-    <ambientLight intensity={0.6} />
-
-    <pointLight intensity={25} />
-
-  
-    {/* Model */}
-    <primitive 
-       object={computer.scene}
-       scale={isMobile?0.4 : 0.65}
-       position={isMobile?[0,-3,-0.7]:[0, -3.25, -1.5]}
-       rotation = {[-0.01, -0.2, -0.1]}
-    />
-  </mesh>
-  )
-}
+      {/* Basic ambient and directional lighting */}
+      <ambientLight intensity={0.5} />
+      <directionalLight intensity={0.8} position={[10, 10, 5]} />
+      
+      {/* Adjusted scale and position for mobile and desktop */}
+      <primitive
+        object={computer.scene}
+        scale={isMobile ? 0.25 : 0.42} // Smaller scale for both
+        position={isMobile ? [0, -2, -0.5] : [0, -2.1, -1.1]} 
+        rotation={[-0.01, -0.2, -0.1]}
+      />
+    </mesh>
+  );
+};
 
 const ComputersCanvas = () => {
-   const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-   useEffect(() => {
-   const mediaQuery = window.matchMedia('(max-width: 768px)');
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
 
-   setIsMobile(mediaQuery.matches);
+    const handleMediaQueryChange = (event) => setIsMobile(event.matches);
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
 
-   const handleMediaQueryChange = (event) =>{
-    setIsMobile(event.matches);
-   }
-
-   mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-   return () => {
-    mediaQuery.removeEventListener('change', handleMediaQueryChange);
-   }
-     
-     
-   }, [])
-   
+    return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
+  }, []);
 
   return (
-    <Canvas
-    style={{ background: '#000', width: '100%', height: '100%' }}
-    frameloop="demand"
-    shadows
-    camera={{ position: [22, 3, 5], fov: 25 }}
-    gl={{ preserveDrawingBuffer: true }}
-  >
-      <Suspense fallback={<CanvasLoader />}>
-         <OrbitControls
-            enableZoom={false}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 2}
-         />
-          <Computers isMobile = {isMobile}/>
-       </Suspense>
+    <div style={{ width: '100vw', height: '100vh', backgroundColor: '#000' }}>
+      <Canvas
+        frameloop="demand"
+        camera={{ position: [10, 3, 5], fov: 25 }}
+      >
+        <Suspense fallback={<CanvasLoader />}>
+          {/* Limited OrbitControls */}
+          <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
+          
+          {/* Render Computers model */}
+          <Computers isMobile={isMobile} />
+        </Suspense>
+        
+        <Preload all />
+      </Canvas>
+    </div>
+  );
+};
 
-       <Preload all />
-    </Canvas> 
-      
-  )
-}
-
-export default ComputersCanvas
-
+export default ComputersCanvas;
