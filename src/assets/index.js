@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import logoC from "./logoC.svg";
+import laptopimage from "./laptop1.jpg";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
@@ -76,5 +77,6 @@ export {
   Edgenre,
   expressjs,
   AWS,
-  sql
+  sql,
+  laptopimage
 };
