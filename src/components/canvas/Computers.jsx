@@ -42,7 +42,7 @@ const ComputersCanvas = () => {
    const [isMobile, setIsMobile] = useState(false);
 
    useEffect(() => {
-   const mediaQuery = window.matchMedia('(max-width: 500px)');
+   const mediaQuery = window.matchMedia('(max-width: 768px)');
 
    setIsMobile(mediaQuery.matches);
 
@@ -65,7 +65,7 @@ const ComputersCanvas = () => {
       frameloop="demand"
       shadows
       camera={{ position: [22, 3, 5], fov: 25}}
-      gl={{ preserveDrawingBuffer: true}}
+      gl={{ preserveDrawingBuffer: true, pixelRatio: isMobile ? window.devicePixelRatio : 1 }}
     >
       <Suspense fallback={<CanvasLoader />}>
          <OrbitControls
