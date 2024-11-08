@@ -1,73 +1,87 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-import CanvasLoader from "../Loader";
+import React from 'react'
+import { Suspense, useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 
-const Computers = ({ isMobile }) => {
-  const { scene } = useGLTF("./desktop_pc/scene.gltf");
-  
-  if (scene && scene.position && scene.position.isNaN) {
-    scene.position.set(0, 0, 0); // Fallback position if NaN is detected
-  }
+import CanvasLoader from '../Loader'
 
+const Computers = ({isMobile}) => {
+
+  const computer = useGLTF('./desktop_pc/scene.gltf')
   return (
     <mesh>
-      <hemisphereLight intensity={0.15} groundColor="black" />
-      <spotLight
-        position={[-20, 50, 10]}
-        angle={0.12}
-        penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={1024}
-      />
-      <pointLight intensity={1} />
-      <primitive
-        object={scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
-      />
-    </mesh>
-  );
-};
+    {/* Hemisphere Light */}
+    <hemisphereLight intensity={1.5}
+     groundColor="black"
+     skyColor="white"
+     position={[0, 50, 0]} />
+    
+     <directionalLight
+  intensity={1}
+  position={[10, 10, 5]} // Adjust position as needed
+  castShadow
+/>
+    {/* Ambient Light */}
+    <ambientLight intensity={0.6} />
+
+    <pointLight intensity={25} />
+
+  
+    {/* Model */}
+    <primitive 
+       object={computer.scene}
+       scale={isMobile?0.4 : 0.65}
+       position={isMobile?[0,-3,-0.7]:[0, -3.25, -1.5]}
+       rotation = {[-0.01, -0.2, -0.1]}
+    />
+  </mesh>
+  )
+}
+
 const ComputersCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
+   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+   useEffect(() => {
+   const mediaQuery = window.matchMedia('(max-width: 768px)');
 
-    checkMobile(); // Initial check
-    window.addEventListener("resize", checkMobile);
+   setIsMobile(mediaQuery.matches);
 
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+   const handleMediaQueryChange = (event) =>{
+    setIsMobile(event.matches);
+   }
 
-  useEffect(() => {
-    console.log("isMobile:", isMobile); // Log to confirm detection
-  }, [isMobile]);
+   mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+   return () => {
+    mediaQuery.removeEventListener('change', handleMediaQueryChange);
+   }
+     
+     
+   }, [])
+   
 
   return (
-    <div style={{ width: "100vw", height: "100vh", backgroundColor: "#000" }}>
-      <Canvas
-        frameloop="demand"
-        shadows
-        dpr={[1, 1.5]} // Limit device pixel ratio for performance
-        camera={{ position: [20, 3, 5], fov: 25 }}
-        gl={{ preserveDrawingBuffer: true }}
-      >
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls
+    <Canvas
+    style={{ background: '#000', width: '100%', height: '100%' }}
+    frameloop="demand"
+    shadows
+    camera={{ position: [22, 3, 5], fov: 25 }}
+    gl={{ preserveDrawingBuffer: true }}
+  >
+      <Suspense fallback={<CanvasLoader />}>
+         <OrbitControls
             enableZoom={false}
             maxPolarAngle={Math.PI / 2}
             minPolarAngle={Math.PI / 2}
-          />
-          <Computers isMobile={isMobile} />
-        </Suspense>
-        <Preload all />
-      </Canvas>
-    </div>
-  );
-};
+         />
+          <Computers isMobile = {isMobile}/>
+       </Suspense>
 
-export default ComputersCanvas;
+       <Preload all />
+    </Canvas> 
+      
+  )
+}
+
+export default ComputersCanvas
+
